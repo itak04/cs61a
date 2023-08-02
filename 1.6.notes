@@ -1,13 +1,16 @@
-//函数嵌套
+//1.6.函数嵌套
 //example
 >>> def average(x,y):
 	return (x+y)/2
+
 >>> def approx_eq(x,y,tolerance=1e-5)://减少误差
 	return abs(x-y)<tolerance
+
 >>> def iter_improve(update, test, guess=1):
         while not test(guess):
             guess = update(guess)
         return guess
+
 >>> def square_root(x):
 	def update(guess):
 		return average(guess,x/guess)
