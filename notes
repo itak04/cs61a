@@ -1,5 +1,4 @@
 //lab01
-
     """Compute the falling factorial of n to depth k.
 
     >>> falling(6, 3)  # 6 * 5 * 4
