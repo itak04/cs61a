@@ -1,114 +1,16 @@
-//lab01
-    """Compute the falling factorial of n to depth k.
-
-    >>> falling(6, 3)  # 6 * 5 * 4
-    120
-    >>> falling(4, 3)  # 4 * 3 * 2
-    24
-    >>> falling(4, 1)  # 4
-    4
-    >>> falling(4, 0)
-    1
-    """
-    "*** YOUR CODE HERE ***"
-def stop_calculating(n, k):
-    if (n > k):
-        return 1
-    else:
-        return 0
-
-def falling(n, k):
-    result = 1
-    while (stop_calculating(n, k)):
-        result *= n
-        n -= 1
-    return result
-
-def sum_digits(y):
-    """Sum all the digits of y.
-
-    >>> sum_digits(10) # 1 + 0 = 1
-    1
-    >>> sum_digits(4224) # 4 + 2 + 2 + 4 = 12
-    12
-    >>> sum_digits(1234567890)
-    45
-    >>> a = sum_digits(123) # make sure that you are using return rather than print
-    >>> a
-    6
-    """
-    "*** YOUR CODE HERE ***"
-
->>> def sum_digits(y):
-	a=y/1000000000%10
-	b=y/100000000%10
-	c=y/10000000%10
-	d=y/1000000%10
-	e=y/100000%10
-	f=y/10000%10
-	g=y/1000%10
-	h=y/10%10
-	i=y%10
-	result =a+b+c+d+e+f+g+h+i
-	print('value=',a,b,c,d,e,f,g,h,i)
-	return int(result)
-
-def divisible_by_k(n, k):
-    """
-    >>> a = divisible_by_k(10, 2)  # 2, 4, 6, 8, and 10 are divisible by 2
-    2
-    4
-    6
-    8
-    10
-    >>> a
-    5
-    >>> b = divisible_by_k(3, 1)  # 1, 2, and 3 are divisible by 1
-    1
-    2
-    3
-    >>> b
-    3
-    >>> c = divisible_by_k(6, 7)  # There are no integers up to 6 divisible by 7
-    >>> c
-    0
-    """
-    "*** YOUR CODE HERE ***"
-def divisible_by_k(n,k):
-	result = n/k
-	a=k
-	while(n/k==int(n/k)):
-		if(k==n):
-			print(k)
-			break
-		else:
-			while(n!=k):
-				print(k)
-				k+=a
-	return int(result)
-
-def double_eights(n):
-    """Return true if n has two eights in a row.
-    >>> double_eights(8)
-    False
-    >>> double_eights(88)
-    True
-    >>> double_eights(2882)
-    True
-    >>> double_eights(880088)
-    True
-    >>> double_eights(12345)
-    False
-    >>> double_eights(80808080)
-    False
-    """
-    "*** YOUR CODE HERE ***"
-def double_eights(y):
-	num =0
-	while y>1:
-		if(int(y%10==8)):
-			num+=1
-		y//=10
-	if(num ==2):
-		return True
-	return False
+//函数嵌套
+//example
+>>> def average(x,y):
+	return (x+y)/2
+>>> def approx_eq(x,y,tolerance=1e-5)://减少误差
+	return abs(x-y)<tolerance
+>>> def iter_improve(update, test, guess=1):
+        while not test(guess):
+            guess = update(guess)
+        return guess
+>>> def square_root(x):
+	def update(guess):
+		return average(guess,x/guess)
+	def test(guess):
+		return approx_eq(guess*guess,x)
+	return iter_improve(update,test)
