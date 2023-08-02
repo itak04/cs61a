@@ -1,5 +1,5 @@
 //1.6.函数嵌套
-//example
+//example平方根
 >>> def average(x,y):
 	return (x+y)/2
 
