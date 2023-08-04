@@ -16,28 +16,6 @@ def composer(f, g):
     return lambda x: f(g(x))
 
 
-def composite_identity(f, g):
-    """
-    Return a function with one parameter x that returns True if f(g(x)) is
-    equal to g(f(x)). You can assume the result of g(x) is a valid input for f
-    and vice versa.
-
-    >>> add_one = lambda x: x + 1        # adds one to x
-    >>> square = lambda x: x**2
-    >>> b1 = composite_identity(square, add_one)
-    >>> b1(0)                            # (0 + 1)^2 == 0^2 + 1
-    True
-    >>> b1(4)                            # (4 + 1)^2 != 4^2 + 1
-    False
-    """
-    def identity(x):
-        return composer(f, g)(x) == composer(g, f)(x)
-    return identity
-
-    # Alternative solution
-    return lambda x: f(g(x)) == g(f(x))
-
-
 def count_cond(condition):
     """Returns a function with one parameter N that counts all the numbers from
     1 to N that satisfy the two-argument predicate function Condition, where
@@ -74,21 +52,6 @@ def count_cond(condition):
             i += 1
         return count
     return counter
-
-
-def multiple(a, b):
-    """Return the smallest number n that is a multiple of both a and b.
-
-    >>> multiple(3, 4)
-    12
-    >>> multiple(14, 21)
-    42
-    """
-    n = 1
-    while True:
-        if n % a == 0 and n % b == 0:
-            return n
-        n += 1
 
 
 def cycle(f1, f2, f3):
@@ -129,14 +92,5 @@ def cycle(f1, f2, f3):
                     x = f3(x)
                 i += 1
             return x
-        return ret
-    return ret_fn
-
-    # Alternative solution
-    def ret_fn(n):
-        def ret(x):
-            if n == 0:
-                return x
-            return cycle(f2, f3, f1)(n - 1)(f1(x))
         return ret
     return ret_fn
